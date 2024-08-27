@@ -40,11 +40,39 @@ void ImprimirProduto(TProduto Item){
     printf("Nome:%d", Item.codigo);
     printf("Nome:%.2f",Item.valor);
 }
-void ImprimirPilha(){
+void ImprimirPilha(TPilha *Pilha){
+	TProduto x;
+	TPilha FAux, FPVazia(&FAux);
+	int n = Pilha->tamanho;
+	for(int i = 0; i<n; i++){
+		Desempilha(Pilha,FAux);
+		ImprimirProduto(x);
+		}
+		free(FAux);
+	}
+void LiberarPilha(TPilha *Pilha){
+	TProduto x;
+	while(!Vazia(Pilha){
+		Desempilha(Pilha, &Pilha->topo->prox->item);
+
+		free(Pilha->fundo);
 
 }
-void LiberarPilha(){
-}
-int PesquisarPilha(){
-
+int PesquisarPilha(TPilha *Pilha, TProduto *Item){
+	TPilha PAux;
+	FPVazia(&PAux);
+	TProduto x;
+	int flag = 0;
+	while(!Vazia(*Pilha){
+		Desempilhar(&Pilha, &x);
+		Empilhar(x,&PAux);
+	}
+	while(!Vazia(PAux){
+		Desempilhar(&PAux,&x);
+		Empilhar(x,Pilha);
+	}
+	if(flag == 0){
+		Item.codigo = -1;
+	}
+	return flag;
 }

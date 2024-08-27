@@ -25,8 +25,8 @@ int Vazia(TPilha Pilha);
 void Empilhar(TPilha *Pilha, TProduto x);
 void Desempilhar(TPilha *Pilha, TProduto *Item);
 void ImprimirProduto(TProduto Item);
-void ImprimirPilha();
-void LiberarPilha();
-int PesquisarPilha();
+void ImprimirPilha(TPilha *Pilha);
+void LiberarPilha(TPilha *Pilha);
+int PesquisarPilha(TPilha *Pilha, TProduto *Item);
 
 #endif //PILHA_H
