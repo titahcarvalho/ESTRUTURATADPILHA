@@ -5,7 +5,9 @@
 typedef struct {
     char nome [100];
     char descricao[100];
-    int codigo;
+    int  codigo;
+    int quantidade;
+    float preco;
     float valor;
 }TProduto;
 
@@ -24,9 +26,12 @@ void FPVazia(TPilha *Pilha);
 int Vazia(TPilha Pilha);
 void Empilhar(TPilha *Pilha, TProduto x);
 void Desempilhar(TPilha *Pilha, TProduto *Item);
+void LerProdutoPilha(TProduto *Item);
 void ImprimirProduto(TProduto Item);
 void ImprimirPilha(TPilha *Pilha);
 void LiberarPilha(TPilha *Pilha);
 int PesquisarPilha(TPilha *Pilha, TProduto *Item);
+void InverterPilha(TPilha *Pilha);
+void ConverterBinárioInverso(TPilha *Pilha, int n);
 
 #endif //PILHA_H
