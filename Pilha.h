@@ -33,5 +33,7 @@ void LiberarPilha(TPilha *Pilha);
 int PesquisarPilha(TPilha *Pilha, TProduto *Item);
 void InverterPilha(TPilha *Pilha);
 void ConverterBinárioInverso(TPilha *Pilha, int n);
+void TorreHanoi(TPilha *Pilha, TCelula disco);
+
 
 #endif //PILHA_H

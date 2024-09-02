@@ -94,6 +94,7 @@ int PesquisarPilha(TPilha *Pilha, TProduto *Item);
 	}
 	return flag;
 }
+//QUESTÃO 1---------------------------------------------------------------------------------------------------------
 void InverterPilha(TPilha *Pilha){
 	TPilha* Aux;
 	FPVazia(&Aux);
@@ -110,6 +111,7 @@ void InverterPilha(TPilha *Pilha){
 }
 	free(Aux.topo);
 }
+// QUESTÃO 2 ---------------------------------------------------------------------------------------------------------
 void ConverterBinárioInverso(TPilha *Pilha, int n){
 	FPVazia(Pilha);
 	TProduto x;
@@ -121,31 +123,45 @@ void ConverterBinárioInverso(TPilha *Pilha, int n){
 	while(!Vazia(Pilha)){
 		Desempilhar(x, Pilha);
 		ImprimirPilha(Pilha);
-
-
 	}
 }
 
+// QUESTÃO 3 ---------------------------------------------------------------------------------------------------------
+void TorreHanoi(TPilha *Pilha, TCelula disco) {
+	TPilha* Aux;
+	TPilha* Destino;
+	FPVazia(&Aux);
+	FPVazia(&Destino);
+	int n; //numero total de movimentos
+	n = (1 << disco) -1; //operador de deslocamento para a exponenciação ou biblioteca POW em math.h
+	if(disco%2 == 0) {
+		TPilha* temp = Destino;
+		Destino = Aux;
+		Aux = temp;
 
+		printf("O n° de movimentos total pela quantidade par de discos é %d", n);
 
-/*    for(int i = 0; i < n ;i++) {
-        Desenfileirar(Fila, binario);
-
-        strcpy(binario2, binario); //binario2 = binario;
-        strcat(binario,"0");
-        printf("%s\n", binario);
-
-        strcpy(binario, binario2); //binario = binario2;
-        strcat(binario, "1");
-        printf("%s\n", binario);
-
-        Enfileirar(binario2, Fila);*/
-	if(n == 0){
-		printf("%d", n);
 	} else {
-		printf("%d", n%2);
+		printf("O n° de movimentos total pela quantidade ímpar de discos é %d", n);
+	}
+	for(int i = 1; i <= n; i++)  {
+		if(i%3 == 1) {
+			TCelula topo = Desempilhar(Pilha);
+			Empilhar(Destino, topo); // movimentar entre Pilha e Destino se i % 1 == 1
+		} else if (i%3 == 2) {
+			TCelula topo = Desempilhar(Pilha);
+			Empilhar(Aux, topo);
+		} else if (i%3 == 0) {
+			TCelula topo = Desempilhar(Aux);
+			Empilhar(Destino, topo);
+		}
+
 	}
 
-
-
 }
+
+// QUESTÃO 4 ---------------------------------------------------------------------------------------------------------
+
+
+
+// QUESTÃO 5 ---------------------------------------------------------------------------------------------------------
