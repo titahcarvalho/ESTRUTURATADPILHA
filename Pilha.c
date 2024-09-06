@@ -60,12 +60,18 @@ void ImprimirProduto(TProduto Item){
 }
 void ImprimirPilha(TPilha *Pilha){
 	TProduto x;
-	TPilha FAux, FPVazia(&FAux);
+	TPilha FAux;
+	FPVazia(&FAux);
 	int n = Pilha->tamanho;
 	for(int i = 0; i<n; i++){
-		Desempilhar(Pilha,&FAux);
+		Desempilhar(Pilha,&x);
 		ImprimirProduto(x);
+		Empilhar(&FAux, x);
 		}
+	while(!Vazia(FAux)) {
+		Desempilhar(&FAux, &x);
+		Empilhar(Pilha, x);
+	}
 		free(&FAux);
 	}
 void LiberarPilha(TPilha *Pilha){
@@ -96,19 +102,19 @@ int PesquisarPilha(TPilha *Pilha, TProduto *Item);
 }
 //QUESTÃO 1---------------------------------------------------------------------------------------------------------
 void InverterPilha(TPilha *Pilha){
-	TPilha* Aux;
+	TPilha Aux;
 	FPVazia(&Aux);
 	TProduto x;
 
-	while(!Vazia(*Pilha)){
+	while (!Vazia(*Pilha)) {
 		Desempilhar(Pilha, &x);
-		Empilhar(x, &Aux);
+		Empilhar(&Aux, x);
 	}
-	ImprimirPilha(&Aux);
-	while(!Vazia(*Aux)){
+	// ImprimirPilha(&Aux);
+	while (!Vazia(Aux)) {
 		Desempilhar(&Aux, &x);
-		Empilhar(x, Pilha);
-}
+		Empilhar(Pilha, x);
+	}
 	free(Aux.topo);
 }
 // QUESTÃO 2 ---------------------------------------------------------------------------------------------------------
@@ -120,8 +126,8 @@ void ConverterBinárioInverso(TPilha *Pilha, int n){
 		Empilhar(Pilha, x);
 		n = n/2;
 	}
-	while(!Vazia(Pilha)){
-		Desempilhar(x, Pilha);
+	while(!Vazia(*Pilha)){
+		Desempilhar(Pilha, &x);
 		ImprimirPilha(Pilha);
 	}
 }

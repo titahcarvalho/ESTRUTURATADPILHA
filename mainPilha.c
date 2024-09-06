@@ -1,5 +1,4 @@
 #include "Pilha.h"
-#include "Pilha.c"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -15,14 +14,15 @@ int main() {
         printf("|1| Empilhar produtos:\n");
         printf("|2| Pesquisar um produto:\n");
         printf("|3| Imprimir produtos.\n");
-        printf("|4| Sair.\n");
+        printf("|4| Inverter Pilha.\n");
+        printf("|5| Sair.\n");
         printf("Escolha uma das acoes:");
         scanf("%d", &escolha);
 
         switch (escolha) {
             case 1:
                 LerProdutoPilha(&x);
-                Empilhar(x, P1);
+                Empilhar(&P1, x);
             break;
 
             case 2:
@@ -46,6 +46,8 @@ int main() {
                 ImprimirPilha(&P1);
             break;
             case 4:
+                InverterPilha(&P1);
+                ImprimirPilha(&P1);
 
             break;
             case 5:
