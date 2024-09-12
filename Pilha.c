@@ -4,6 +4,9 @@
 #include <stdlib.h>
 #include "Pilha.h"
 
+#include <math.h>
+#include <string.h>
+
 void FPVazia(TPilha *Pilha){
     Pilha->topo = (TCelula*)malloc(sizeof(TCelula));
     Pilha->fundo = Pilha->topo;
@@ -167,7 +170,84 @@ void TorreHanoi(TPilha *Pilha, TCelula disco) {
 }
 
 // QUESTÃO 4 ---------------------------------------------------------------------------------------------------------
+/*int maiorSubString(char expressao[]) {
+	int n = strlen(expressao);
+	int maxLen = 0;
 
+	TPilha Pilha;
+	FPVazia(&Pilha);
+	TProduto x;
+	x.nome[0] = -1;
+	x.nome[1] = '\0';
+	Empilhar(&Pilha,x);
 
+	for(int i = 0; i<n; i++) {
+		TProduto y;
+		y.nome[0] = expressao;
+		y.nome[1] = '\0';
+		if(expressao[i] == '(') {
+			Empilhar(&Pilha, y);
+		}else if(expressao[i] == ')') {
+			if(Vazia(Pilha)) {
+				y.nome[0] = i;
+				Empilhar(&Pilha,y);
+			} else {
+				TProduto z;
+				Desempilhar(&Pilha, z);
+				if(Vazia(Pilha)) {
+					y.nome[0] = i;
+					Empilhar(&Pilha,z);
+				}else {
+					int lenAtual = i - z.nome[0];
+					if(lenAtual>maxLen) {
+						maxLen>lenAtual;
+					}
+				}
+			}
+		}
+	}
+
+}*/
+//QUESTÃO 4 ---------------------------------------------------------------------------------------------------------
+void QuantParenteses(char expressao[]) {
+	TPilha Pilha1;
+	FPVazia(&Pilha1);
+
+	TProduto x;
+	int flag = 0;
+	int t = strlen(expressao);
+	int parentEsquerda=0;
+	int parentesquerdaDesempilha=0;
+	int parentDireita=0;
+	int parentDireitaDesempilha=0;
+	for(int i = 0; i<t;i++) {
+		if(expressao[i] == '(') {
+			parentDireita++;
+		} else if(expressao[i]==')') {
+			parentEsquerda++;
+		}
+	}
+	if(parentDireita != parentEsquerda) {
+		if(parentEsquerda < parentDireita) {
+			parentDireita = parentEsquerda;
+		}else {
+			parentEsquerda = parentDireita;
+		}
+	}
+	for(int i = 0; i<t; i++) {
+		x.nome = expressao[i];
+		if(expressao[i] == '(' && parentesquerdaDesempilha < parentEsquerda) {
+			Empilhar(x, &Pilha1);
+			parentesquerdaDesempilha++;
+			flag = 1;
+		} else if(expressao[i] == ')' && parentDireitaDesempilha < parentDireita) {
+			Empilhar(x,&Pilha1);
+			parentDireitaDesempilha++;
+		}
+	}
+	printf("\Saída: %d\n", (parentesquerdaDesempilha+parentDireitaDesempilha));
+	ImprimirPilha(&Pilha1);
+	LiberarPilha(&Pilha1);
+}
 
 // QUESTÃO 5 ---------------------------------------------------------------------------------------------------------

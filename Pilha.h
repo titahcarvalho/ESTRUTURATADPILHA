@@ -34,6 +34,7 @@ int PesquisarPilha(TPilha *Pilha, TProduto *Item);
 void InverterPilha(TPilha *Pilha);
 void ConverterBinárioInverso(TPilha *Pilha, int n);
 void TorreHanoi(TPilha *Pilha, TCelula disco);
+int maiorSubString(char expressao[]);
 
 
 #endif //PILHA_H
